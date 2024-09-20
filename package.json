@@ -4,7 +4,7 @@
   "description": "��#\u0000 \u0000q\u0000r\u0000-\u0000c\u0000o\u0000d\u0000e\u0000-\u0000g\u0000e\u0000n\u0000e\u0000r\u0000a\u0000t\u0000o\u0000r\u0000-\u0000b\u0000o\u0000t\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "start": "micro-bot"
+    "start": "micro-bot -t 7177454775:AAFDgBaWn8-BvJuy95KtLyfY9LvcP5D2KwM index.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "micro-bot": "^2.5.3",
-    "qrcode": "^1.5.3",
-    "telegraf": "^4.16.3"
+    "qrcode": "^1.5.3"
   }
 }

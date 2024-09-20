@@ -1,4 +1,4 @@
-// const {Telegraf} = require('telegraf');
+
 const { Composer } = require('micro-bot')
 var QRCode = require('qrcode')
 const fs = require("fs");
@@ -9,7 +9,7 @@ var basesix = "dgdfgfdg"
 require("dotenv").config();
 
 const TOK = process.env.TOKEN;
-const bot =  new Composer(TOK);
+const bot =  new Composer();
 
 bot.start((ctx) => ctx.reply('Welcome'))    
 bot.use(async(ctx, next) => {
