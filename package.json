@@ -2,9 +2,9 @@
   "name": "mada_qr_code_gen",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000q\u0000r\u0000-\u0000c\u0000o\u0000d\u0000e\u0000-\u0000g\u0000e\u0000n\u0000e\u0000r\u0000a\u0000t\u0000o\u0000r\u0000-\u0000b\u0000o\u0000t\u0000\r\u0000 \u0000",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "micro-bot"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,7 @@
   "homepage": "https://github.com/adamGT/qr-code-generator-bot#readme",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "micro-bot": "^2.5.3",
     "qrcode": "^1.5.3",
     "telegraf": "^4.16.3"
   }
