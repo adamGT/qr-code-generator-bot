@@ -25,12 +25,11 @@ const bot =  new Telegraf(TOK);
 const blockedUsers = new Set();
 
 bot.start(async (ctx) => {
-    await saveUser(ctx);
     if (blockedUsers.has(ctx.from.id)) {
     await ctx.reply('Welcome back! to our QR code generator bot. where you can send me any text and i will convert it to qr code. developed by madA')
     return;
     }
-    
+    await saveUser(ctx);
     await ctx.reply('Welcome to our QR code generator bot. where you can send me any text and i will convert it to qr code. developed by madA')
 });
 
