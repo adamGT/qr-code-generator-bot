@@ -14,11 +14,11 @@ const blockedUsers = new Set();
 
 bot.start(async (ctx) => {
     if (blockedUsers.has(ctx.from.id)) {
-    await ctx.reply('"Welcome back! to our QR code generator bot. where you can send me any text and i will convert it to qr code. developed by madA')
+    await ctx.reply('"Welcome back! to our QR code generator bot. where you can send me any text and i will convert it to qr code. /n developed by madA')
     return;
     }
     
-    await ctx.reply('Welcome to our QR code generator bot. where you can send me any text and i will convert it to qr code. developed by madA')
+    await ctx.reply('Welcome to our QR code generator bot. where you can send me any text and i will convert it to qr code. /n developed by madA')
 });
 
 bot.command('stop', async (ctx) => {  
