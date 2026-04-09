@@ -10,10 +10,12 @@ require("dotenv").config();
 
 const TOK = process.env.TOKEN;
 const bot =  new Telegraf(TOK);
-const blockedUsers = new Set();
 
 bot.start((ctx) => ctx.reply('Welcome to our QR code generator bot. where you can send me any text and i will convert it to qr code. developed by madA'))    
+
 bot.use(async(ctx, next) => {
+    if (!ctx.update.message || !ctx.update.message.text) return;
+    if (ctx.update.message.text.startsWith('/')) return;
     getqrcode(ctx.update.message.text)
     setTimeout(function() {
         next();
@@ -26,7 +28,7 @@ bot.use(async(ctx, next) => {
 })
 
 bot.command('stop', async (ctx) => {
-  blockedUsers.add(ctx.from.id);
+  
   await ctx.reply("You have stopped the bot. Send /start to use it again.");
 });
 
