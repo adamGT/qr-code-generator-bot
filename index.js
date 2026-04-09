@@ -5,6 +5,18 @@ const fs = require("fs");
 
 var basesix = "dgdfgfdg"
 
+const { Client } = require("pg");
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
+
+
 
 require("dotenv").config();
 
@@ -17,7 +29,7 @@ bot.start(async (ctx) => {
     await ctx.reply('Welcome back! to our QR code generator bot. where you can send me any text and i will convert it to qr code. developed by madA')
     return;
     }
-    
+    await saveUser(ctx);
     await ctx.reply('Welcome to our QR code generator bot. where you can send me any text and i will convert it to qr code. developed by madA')
 });
 
@@ -52,6 +64,30 @@ function getqrcode(text){
         // console.log(url.substr(url.indexOf(',') + 1))
         basesix = Buffer.from(url.substr(url.indexOf(',') + 1), 'base64');
       })
+}
+
+
+async function saveUser(ctx) {
+  const { id, username, first_name, last_name } = ctx.from;
+
+  await client.query(
+    `
+    INSERT INTO users (telegram_id, username, first_name, last_name)
+    VALUES ($1, $2, $3, $4)
+    ON CONFLICT (telegram_id)
+    DO UPDATE SET
+      username = EXCLUDED.username,
+      first_name = EXCLUDED.first_name,
+      last_name = EXCLUDED.last_name,
+      last_seen = NOW()
+    `,
+    [
+      id,
+      username || null,
+      first_name || null,
+      last_name || null
+    ]
+  );
 }
 
 bot.launch()
